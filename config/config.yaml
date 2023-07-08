@@ -1,0 +1,166 @@
+# INITIAL SETTINGS
+data_source: 
+  directory: data/raw/
+  file_name: fraud_dataset.csv
+  target_name: 'fraud_reported'
+  features: ['months_as_customer', 'age', 'policy_number', 'policy_bind_date',
+       'policy_state', 'policy_csl', 'policy_deductable',
+       'policy_annual_premium', 'umbrella_limit', 'insured_zip', 'insured_sex',
+       'insured_education_level', 'insured_occupation', 'insured_hobbies',
+       'insured_relationship', 'capital-gains', 'capital-loss',
+       'incident_date', 'incident_type', 'collision_type', 'incident_severity',
+       'authorities_contacted', 'incident_state', 'incident_city',
+       'incident_location', 'incident_hour_of_the_day',
+       'number_of_vehicles_involved', 'property_damage', 'bodily_injuries',
+       'witnesses', 'police_report_available', 'total_claim_amount',
+       'injury_claim', 'property_claim', 'vehicle_claim', 'auto_make',
+       'auto_model', 'auto_year']
+  datetime_features: ['policy_bind_date', 'incident_date']
+  cat_features: ['policy_number', 'policy_state', 'policy_csl', 'insured_zip', 
+       'insured_sex', 'insured_education_level', 'insured_occupation', 'insured_hobbies', 
+       'insured_relationship', 'incident_type', 'collision_type', 'incident_severity', 
+       'authorities_contacted', 'incident_state', 'incident_city', 'incident_location', 
+       'property_damage', 'police_report_available', 'auto_make', 'auto_model', 'auto_year']
+  num_int_features: ['months_as_customer', 'age', 'incident_hour_of_the_day', 
+       'number_of_vehicles_involved', 'bodily_injuries', 'witnesses']
+  num_float_features: ['policy_deductable', 'policy_annual_premium', 'umbrella_limit', 
+       'capital-gains', 'capital-loss', 'total_claim_amount', 'injury_claim', 'property_claim', 
+       'vehicle_claim']
+  num_features: ['months_as_customer', 'age', 'incident_hour_of_the_day', 
+       'number_of_vehicles_involved', 'bodily_injuries', 'witnesses', 'policy_deductable', 
+       'policy_annual_premium', 'umbrella_limit', 'capital-gains', 'capital-loss', 
+       'total_claim_amount', 'injury_claim', 'property_claim', 'vehicle_claim']
+  test_size: 0.3
+  random_state: 999
+
+
+# train test data
+train_test_data: 
+  directory: data/processed/
+  X_train: X_train.pkl
+  y_train: y_train.pkl
+  X_test: X_test.pkl
+  y_test: y_test.pkl
+  X_train_clean: X_train_clean.pkl
+  y_train_clean: y_train_clean.pkl
+  X_train_clean_rus: X_train_clean_rus.pkl
+  y_train_clean_rus: y_train_clean_rus.pkl
+  X_train_clean_ros: X_train_clean_ros.pkl
+  y_train_clean_ros: y_train_clean_ros.pkl
+  X_test_clean: X_test_clean.pkl
+  y_test_clean: y_test_clean.pkl
+
+
+# preprocessing and feature engineering
+preprocess:
+  datetime_features: []
+  cat_features: ['policy_state', 'policy_csl', 'insured_sex', 'insured_education_level', 'insured_occupation', 'insured_hobbies', 'insured_relationship', 'incident_type', 'collision_type', 'incident_severity', 'authorities_contacted', 'incident_state', 'property_damage', 'police_report_available', 'auto_make', 'auto_model', 'auto_year']
+  num_int_features: ['age', 'number_of_vehicles_involved', 'bodily_injuries', 'witnesses']
+  num_float_features: ['policy_deductable', 'policy_annual_premium', 'umbrella_limit', 'capital-gains', 'capital-loss', 'total_claim_amount', 'injury_claim', 'property_claim', 'vehicle_claim']
+  num_features: ['age', 'number_of_vehicles_involved', 'bodily_injuries', 'witnesses', 'auto_year', 'policy_deductable', 'policy_annual_premium', 'umbrella_limit', 'capital-gains', 'capital-loss', 'total_claim_amount', 'injury_claim', 'property_claim', 'vehicle_claim']
+  drop_features: ['policy_number', 'policy_bind_date', 'insured_zip', 'incident_date', 'incident_city', 'incident_location', 'incident_hour_of_the_day', 'months_as_customer']
+feature_eng:
+  sampler_random_state: 0
+
+
+# data defense
+data_defense:
+  policy_number:
+    length: 6
+  months_as_customer:
+    min_value: 0
+  policy_state:
+    value: ['IL', 'IN', 'OH']
+  policy_csl:
+    value: ['100/300', '250/500', '500/1000']
+  policy_deductable:
+    min_value: 0
+  umbrella_limit:
+    min_value: 0
+  policy_annual_premium:
+    min_value: 0
+  capital-gains:
+    min_value: 0
+  capital-loss:
+    max_value: 0
+  insured_age:
+    min_value: 0
+  insured_sex:
+    value: ['MALE', 'FEMALE']
+  insured_zip:
+    length: 6
+  insured_occupation:
+    value: ['craft-repair', 'prof-specialty', 'transport-moving', 'other-service', 'priv-house-serv', 'sales', 'tech-support', 'armed-forces', 'protective-serv', 'exec-managerial', 'machine-op-inspct', 'adm-clerical', 'handlers-cleaners', 'farming-fishing']
+  insured_hobbies:
+    value: ['sleeping', 'paintball', 'polo', 'golf', 'exercise', 'video-games', 'cross-fit', 'board-games', 'movies', 'reading', 'kayaking', 'skydiving', 'bungie-jumping', 'camping', 'yachting', 'chess', 'hiking', 'basketball', 'dancing', 'base-jumping']
+  insured_education_level:
+    value: ['Masters', 'JD', 'MD', 'College', 'High School', 'Associate', 'PhD']
+  insured_relationship:
+    value: ['not-in-family', 'husband', 'own-child', 'unmarried', 'wife', 'other-relative']
+  incident_type:
+    value: ['Multi-vehicle Collision', 'Parked Car', 'Single Vehicle Collision', 'Vehicle Theft']
+  collision_type:
+    value: ['Side Collision', 'Rear Collision', 'Front Collision']
+  incident_severity:
+    value: ['Major Damage', 'Minor Damage', 'Total Loss', 'Trivial Damage']
+  number_of_vehicles_involved:
+    min_value: 0
+  bodily_injuries:
+    min_value: 0
+  witnesses:
+    min_value: 0
+  property_damage:
+    value: ['NO', 'YES']
+  authorities_contacted:
+    value: ['Ambulance', 'Fire', 'Police']
+  police_report_available:
+    value: ['NO', 'YES']
+  injury_claim:
+    min_value: 0
+  property_claim:
+    min_value: 0
+  vehicle_claim:
+    min_value: 0
+
+
+# model selecting and hyperparameter tuning
+ls_model:
+  random_state: [1]
+  # Decision Tree
+  dt:
+    criterion: ['entropy']
+    max_depth: [3, 5, 7]
+    min_samples_split: [2, 5, 7]
+    class_weight: [NULL, 'balanced']
+  # Random Forest
+  rf:
+    n_estimators: [100, 200, 300]
+    min_samples_split: [2, 5, 7]
+    class_weight: [NULL, 'balanced']
+  # Adaboost
+  ab:
+    n_estimators: [50, 100, 200]
+    learning_rate: [0.001, 0.01, 0.1]
+  # Gradient Boosting
+  gb:
+    loss: ['log_loss', 'deviance', 'exponential']
+    n_estimators: [100, 200, 300]
+    learning_rate: [0.001, 0.01, 0.1]
+    max_features: ['sqrt']
+  # XGB
+  xgb:
+    max_depth: [3, 5, 7]
+    learning_rate: [0.001, 0.01, 0.1]
+    sampling_method: ['uniform', 'gradient_based']
+
+
+# final model
+# Decision Tree
+final_model:
+  parameter:
+    criterion: entropy
+    max_depth: 3
+    random_state: 1
+  predictors: ['incident_severity', 'insured_hobbies', 'insured_education_level']
+  model_directory: model/
+  model_name: Decision_Tree_Classifier.pkl

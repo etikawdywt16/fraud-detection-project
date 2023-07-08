@@ -1,0 +1,7 @@
+uvicorn==0.22.0
+fastapi==0.96.0
+scikit-learn==1.2.2
+pandas==2.0.2
+PyYAML==5.4.1
+python-dateutil==2.8.2
+joblib==1.2.0

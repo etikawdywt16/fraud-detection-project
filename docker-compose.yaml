@@ -1,0 +1,23 @@
+name: fraud_detection
+services:
+  streamlit:
+    build: 
+      context: docker/streamlit
+      dockerfile: Dockerfile
+    container_name: streamlit-service
+    depends_on:
+      - api
+    ports:
+      - 8501:8501
+    volumes:
+      - ./:/home/
+
+  api:
+    build: 
+      context: docker/api
+      dockerfile: Dockerfile
+    container_name: api-service
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/home/
