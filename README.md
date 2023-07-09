@@ -1,16 +1,19 @@
 # CLAIM FRAUD DETECTOR #
 
 ## Business Problem and Objectives ##
-In the insurance industry, claims are one of the common aspects that are noticed by the company. An insurance claim is a formal request to an insurance company asking for a payment based on the terms of the insurance policy. The insurance company reviews the claim for its validity and then pays out to the insured or requesting party (on behalf of the insured) once approved.¹
+In the insurance industry, claims are one of the common aspects that are noticed by the company. An insurance claim is a formal request to an insurance company asking for a payment based on the terms of the insurance policy. The insurance company reviews the claim for its validity and then pays out to the insured or requesting party (on behalf of the insured) once approved<sup>[1](https://www.gicouncil.in/insurance-education/insurance-claims/)</sup>.
 
-But, due to personal or group interest, in some cases, a person or group can intentionally commit fraud to obtain advantages by the claim. Indeed, this behavior inflicts financial loss for the company. Costs for dealing with fraud are significant and go well beyond the loss claim itself. They can include assessment, detection, and investigation². In addition, the company's reputation is also at stake if the public knows that the fraud cases can't be handled by the company and can become the client's loss if a true claim is wrongly predicted as fraud by the company.
+But, due to personal or group interest, in some cases, a person or group can intentionally commit fraud to obtain advantages by the claim. Indeed, this behavior inflicts financial loss for the company. Costs for dealing with fraud are significant and go well beyond the loss claim itself. They can include assessment, detection, and investigation<sup>[2](https://www.counterfraud.gov.au/total-impacts-fraud)</sup>. In addition, the company's reputation is also at stake if the public knows that the fraud cases can't be handled by the company and can become the client's loss if a true claim is wrongly predicted as fraud by the company.
 
-As a preventive way, initial detection to avoid fraud cases can be done by building a system that can predict whether a claim is a fraud or not fraud. With this solution, an unwanted claim can be prevented and minimize financial loss. And the company's reputation can be good for clients and minimize client loss.
+As a preventive way, initial detection to avoid fraud cases can be done by building a system that can predict whether a claim is a fraud or not fraud. With this solution, an unwanted claim can be prevented and minimize financial loss. Furthermore, by adopting such an approach, the company's reputation can be safeguarded, ensuring a positive experience among clients while simultaneously minimizing client loss.
 
 ## Business Metrics ##
 Based on the objective above, the business metrics are:
 1. Minimized and reduce the total financial loss for the fraud claim at a period of time before and after the prediction system built
 2. Increase customer satisfaction associated with the claim process
+
+## Machine Learning Workflow ##
+![workflow modeling](https://github.com/etikawdywt16/fraud-detection-project/assets/91242818/eb444839-9ba5-48bf-a372-ec102e341053)
 
 ## Machine Learning Metrics ##
 ![confusion_matrix](https://github.com/etikawdywt16/fraud-detection-project/assets/91242818/846fa0f1-72fa-4ad8-9b68-06c7d6173423)
@@ -23,7 +26,7 @@ The dataset used is the vehicle insurance claim dataset that corresponds with th
 
 The machine learning metric used is the F-1 score because the label data fraud_reported has imbalanced distribution, with the N label more than the Y label. In addition, the precision-recall curve is also used to see how well the model predicted the data in every threshold.
 
-## Modelling ##
+## Modeling ##
 ### Baseline Model ###
 In the baseline model, the model used is DummyClassifier using the most frequent label in the dataset, which is the N label. So, all data predicted as Not Fraud claim.
 
@@ -71,7 +74,12 @@ Decision tree plot
 Based on the final model, the fraud claims can be classified by the incident_severity, insured_hobbies, and insured_education_level.
 
 ## API and Streamlit Service ##
+### How to run the API and Streamlit Service ###
+1. Run `docker compose up`
+2. Go to `localhost:8501`
+3. All the input in the Streamlit will send to and return respond from API in JSON format
 
+### Interface ###
 The API as a back-end service and Streamlit as a front-end service are built using Docker and return an interface as below:
 
 ![front_end](https://github.com/etikawdywt16/fraud-detection-project/assets/91242818/2cdb538c-d3a7-409b-a38b-be2976976d28)
@@ -87,3 +95,6 @@ After all those processes, concluded:
 Hope the next work will:
 1. Develop a model with a more advanced model that can classify claim more perfectly
 2. Develop a Streamlit interface that split policy, insured, and claim detail into 3 separate step forms to be more clearly
+
+## Dataset ##
+[Claim Fraud Dataset](https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/4954928053318020/1058911316420443/167703932442645/latest.html)
