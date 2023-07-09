@@ -13,7 +13,7 @@ Based on the objective above, the business metrics are:
 2. Increase customer satisfaction associated with the claim process
 
 ## Machine Learning Workflow ##
-![workflow modeling](https://github.com/etikawdywt16/fraud-detection-project/assets/91242818/882ae9a5-f1d8-4166-be99-9d8ac36caa00)
+![machine_learning_workflow](https://github.com/etikawdywt16/fraud-detection-project/assets/91242818/f3fd495a-0413-4feb-9dd8-f1276c76b647)
 
 
 ## Machine Learning Metrics ##
