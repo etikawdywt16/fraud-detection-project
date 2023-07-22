@@ -13,7 +13,7 @@ Based on the objective above, the business metrics are:
 2. Increase customer satisfaction associated with the claim process
 
 ## Machine Learning Workflow ##
-![machine_learning_workflow](https://github.com/etikawdywt16/fraud-detection-project/assets/91242818/f3fd495a-0413-4feb-9dd8-f1276c76b647)
+![machine_learning_workflow](https://github.com/etikawdywt16/fraud-detection-project/assets/91242818/0871a186-70eb-46c2-a327-73a2ea4eafef)
 
 
 ## Machine Learning Metrics ##
@@ -76,9 +76,15 @@ Based on the final model, the fraud claims can be classified by the incident_sev
 
 ## API and Streamlit Service ##
 ### How to run the API and Streamlit Service ###
-1. Run `docker compose up`
+On local computer:
+1. Run `docker compose up` to run API and Streamlit service
 2. Go to `localhost:8501`
-3. All the input in the Streamlit will send to and return respond from API in JSON format
+   
+On online server:
+1. Run `sudo docker compose up` to run API and Streamlit service
+2. Go to `184.72.120.208:8501`
+   
+All the input in the Streamlit will send to and return response from API in JSON format
 
 ### Interface ###
 The API as a back-end service and Streamlit as a front-end service are built using Docker and return an interface as below:
