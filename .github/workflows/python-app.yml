@@ -47,19 +47,19 @@ jobs:
             StrictHostKeyChecking no
           END
     - name: Deploy to EC2
-#       env:
-#         PATH_FILE: fraud-detection-project
-#         API_SERVICE_IMAGE: iris-classifier-api
-#         STREAMLIT_SERVICE_IMAGE: iris-classifier-streamlit
+       env:
+         PATH_FILE: fraud-detection-project
+         API_SERVICE_IMAGE: fraud-detection-api
+         STREAMLIT_SERVICE_IMAGE: fraud-detection-streamlit
       run: |
           ssh deploy_ec2 "mkdir temp"
-#          ssh deploy_ec2 "git clone https://github.com/etikawdywt16/fraud-detection-project.git temp"
-#          ssh deploy_ec2 "rsync -a temp/ $PATH_FILE"
-#          ssh deploy_ec2 "rm -rf temp/"
-#          ssh deploy_ec2 "cd $PATH_FILE"
-#          ssh deploy_ec2 "cd $PATH_FILE && sudo docker compose down"
-#          ssh deploy_ec2 "cd $PATH_FILE || sudo docker rmi $API_SERVICE_IMAGE -f || sudo docker rmi  -f"
-#          ssh deploy_ec2 "cd $PATH_FILE && sudo docker compose build && sudo docker compose up -d"
+          ssh deploy_ec2 "git clone https://github.com/etikawdywt16/fraud-detection-project.git temp"
+          ssh deploy_ec2 "rsync -a temp/ $PATH_FILE"
+          ssh deploy_ec2 "rm -rf temp/"
+          ssh deploy_ec2 "cd $PATH_FILE"
+          ssh deploy_ec2 "cd $PATH_FILE && sudo docker compose down"
+          ssh deploy_ec2 "cd $PATH_FILE || sudo docker rmi $API_SERVICE_IMAGE -f || sudo docker rmi  -f"
+          ssh deploy_ec2 "cd $PATH_FILE && sudo docker compose build && sudo docker compose up -d"
 
 #     - name: Install dependencies
 #       run: |
