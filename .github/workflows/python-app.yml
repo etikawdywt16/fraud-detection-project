@@ -47,10 +47,10 @@ jobs:
             StrictHostKeyChecking no
           END
     - name: Deploy to EC2
-       env:
-         PATH_FILE: fraud-detection-project
-         API_SERVICE_IMAGE: fraud-detection-api
-         STREAMLIT_SERVICE_IMAGE: fraud-detection-streamlit
+      env:
+        PATH_FILE: fraud-detection-project
+        API_SERVICE_IMAGE: fraud-detection-api
+        STREAMLIT_SERVICE_IMAGE: fraud-detection-streamlit
       run: |
           ssh deploy_ec2 "mkdir temp"
           ssh deploy_ec2 "git clone https://github.com/etikawdywt16/fraud-detection-project.git temp"
