@@ -28,6 +28,7 @@ with st.form(key = 'POLICY DETAIL'):
 
     policy_bind_date = st.date_input(
         label = 'Inception Date',
+        min_value=date(2000,1,1),
         max_value=date.today()
     )
 
@@ -70,7 +71,8 @@ with st.form(key = 'POLICY DETAIL'):
     # insured detail
     insured_bod = st.date_input(
         label = 'Insured Birth of Date',
-        max_value=date.today()
+        min_value = date(1900,1,1),
+        max_value = date.today()
     )
 
     insured_sex = st.selectbox(
@@ -106,6 +108,7 @@ with st.form(key = 'POLICY DETAIL'):
     # claim detail
     incident_date = st.date_input(
         label = 'Incident Date',
+        min_value=date(2000,1,1),
         max_value=date.today()
     )
 
