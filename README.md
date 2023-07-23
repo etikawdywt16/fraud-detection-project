@@ -81,15 +81,14 @@ On local computer:
 2. Go to `localhost:8501`
    
 On online server:
-1. Run `sudo docker compose up` to run API and Streamlit service
-2. Go to `184.72.120.208:8501`
+1. Go to `184.72.120.208:8501`
    
 All the input in the Streamlit will send to and return response from API in JSON format
 
 ### Interface ###
 The API as a back-end service and Streamlit as a front-end service are built using Docker and return an interface as below:
 
-![front_end](https://github.com/etikawdywt16/fraud-detection-project/assets/91242818/04517f3e-783d-4f00-b54b-d777697c52fa)
+![interface](https://github.com/etikawdywt16/fraud-detection-project/assets/91242818/9fb32839-49fd-4b23-b426-dce0782faa52)
 
 ## Conclusion and Future Work ##
 ### Conclusion ###
