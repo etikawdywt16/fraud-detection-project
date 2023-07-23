@@ -15,7 +15,7 @@ dataset = pd.read_csv(file_name)
 image = Image.open('assets/fraud_claim_image.jpg')
 st.image(image, use_column_width  = 'always')
 
-st.title('CLAIM FRAUD DETECTION')
+st.title('CLAIM FRAUD DETECTOR')
 st.subheader('Please input claim detail')
 
 # create form
